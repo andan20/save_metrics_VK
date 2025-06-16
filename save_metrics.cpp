@@ -10,7 +10,7 @@ Metrics::Metrics()
 , count_types_metrics_(0)
 , metric_id_()
 , metric_name_()
-, metric_value_(0)
+, metric_value_(1, 0)
 , next_free_id_(1)
 {}
 
@@ -30,6 +30,7 @@ size_t Metrics::GetAddedMetrics() const {
 bool Metrics::AddNewType(std::string name, double value) {
     if (metric_id_[name] == 0) {
         metric_id_[name] = next_free_id_++;
+        metric_name_[metric_id_[name]] = name;
         metric_value_.push_back(value);
         count_types_metrics_++;
         count_added_metrics_++;
@@ -81,6 +82,7 @@ void Metrics::Write(std::string filename) {
     file << std::put_time(&local_time, "%d.%m.%Y %H:%M:%S");
     for (int i = 1; i <= count_types_metrics_; i++) {
         file << " " << '"' << metric_name_[i] << '"' << " " << metric_value_[i];
+        metric_value_[i] = 0;
     }
     file << std::endl;
 
