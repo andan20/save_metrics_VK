@@ -12,20 +12,20 @@
    Добавляет новую метрику с названием name с нулевым значением.
    Возвращает true в случае успешнего добавления, иначе false.
 
-5) ###  bool AddNewType(std::string name, double value);
+4) ###  bool AddNewType(std::string name, double value);
     Добавляет новую метрику с названием name со значением value.
     Возвращает true в случае успешнего добавления, иначе false.
 
-7) ### bool AddValue(std::string& name, double value);
+5) ### bool AddValue(std::string& name, double value);
    Переписывает в метрику с названием name значение value.
    Возвращает true в случае успешнего добавления, иначе false.
 
-8)  ### double GetValue(std::string& name);
+6)  ### double GetValue(std::string& name);
    Возвращает значение метрики с именем name.
 
-9) ### bool IsMetric(std::string& name);
+7) ### bool IsMetric(std::string& name);
     Проверяет, есть ли метрика с именем name.
 
-10) ### void Write(std::string filename);
+8) ### void Write(std::string filename);
     Записывает все метрики в файл с именем filename.
     Обнуляет все метрики.
